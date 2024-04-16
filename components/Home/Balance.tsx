@@ -1,11 +1,16 @@
-import { Box, Button, HStack, Text } from "native-base";
+import { Box, Button, HStack, Text, VStack } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import { Pressable, useWindowDimensions } from "react-native";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
+import { FontAwesome5, FontAwesome } from "@expo/vector-icons";
 export default function Balance({
   navigation,
+  setModalVisible,
+  ModalVisible,
 }: {
   navigation: NavigationProp<ParamListBase>;
+  ModalVisible: boolean;
+  setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const dimension = useWindowDimensions();
   return (
@@ -15,7 +20,7 @@ export default function Balance({
       borderRadius={"3xl"}
     >
       <HStack alignItems={"center"} justifyContent={"space-between"}>
-        <Box>
+        <VStack>
           <Text fontSize={dimension.fontScale * 15} color={"white"}>
             My Balance
           </Text>
@@ -26,14 +31,26 @@ export default function Balance({
           >
             $10,000
           </Text>
-        </Box>
-        <Pressable onPress={() => navigation.navigate("Profile")}>
-          <AntDesign
-            name="plus"
-            size={dimension.fontScale * 30}
-            color="white"
-          />
-        </Pressable>
+          <Text fontSize={dimension.fontScale * 12} color={"white"}>
+            Updated Date: 12/12/2024
+          </Text>
+        </VStack>
+        <HStack space={10}>
+          <Pressable onPress={() => setModalVisible(true)}>
+            <FontAwesome
+              name="plus"
+              size={dimension.fontScale * 30}
+              color="white"
+            />
+          </Pressable>
+          <Pressable onPress={() => navigation.navigate("Profile")}>
+            <FontAwesome5
+              name="history"
+              size={dimension.fontScale * 30}
+              color="white"
+            />
+          </Pressable>
+        </HStack>
       </HStack>
     </Box>
   );
