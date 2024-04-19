@@ -13,6 +13,8 @@ export default function BalanceInput({
 }: {
   inputprops: Inputprops;
 }) {
+  const onfocus = { borderColor: "blue.500", bg: "blue.100" };
+
   return (
     <Modal
       isOpen={inputprops.ModalVisible}
@@ -22,15 +24,16 @@ export default function BalanceInput({
     >
       <Modal.Content>
         {/* <Modal.CloseButton /> */}
-        <Modal.Header>Contact Us</Modal.Header>
+        <Modal.Header>Enter Your Salary</Modal.Header>
         <Modal.Body>
           <FormControl>
-            <FormControl.Label>Name</FormControl.Label>
-            <Input ref={inputprops.initialRef} />
-          </FormControl>
-          <FormControl mt="3">
-            <FormControl.Label>Email</FormControl.Label>
-            <Input />
+            <FormControl.Label>Salary in Kyats</FormControl.Label>
+            <Input
+              fontSize={15}
+              ref={inputprops.initialRef}
+              _focus={onfocus}
+              keyboardType="numeric"
+            />
           </FormControl>
         </Modal.Body>
         <Modal.Footer>
@@ -45,6 +48,7 @@ export default function BalanceInput({
               Cancel
             </Button>
             <Button
+              bg={"blue.500"}
               onPress={() => {
                 inputprops.setModalVisible(false);
               }}

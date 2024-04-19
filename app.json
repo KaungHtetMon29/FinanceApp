@@ -6,6 +6,14 @@
     "orientation": "portrait",
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "84521ed3-4c52-4c16-afe2-41b9ec97e8a2"
+      }
+    },
+    "android": {
+      "package": "com.kaunghtetmon.Finance_App"
+    }
   }
 }

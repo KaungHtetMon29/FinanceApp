@@ -1,4 +1,4 @@
-package com.financeapp
+package com.kaunghtetmon.Finance_App
 
 import android.app.Application
 import android.content.res.Configuration

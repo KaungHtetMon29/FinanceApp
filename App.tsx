@@ -5,8 +5,10 @@ import React from "react";
 import MyStack from "./navigation/Stack";
 import { NativeBaseProvider, View } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useWindowDimensions } from "react-native";
 
 export default function App() {
+  const dimension = useWindowDimensions();
   return (
     <NativeBaseProvider>
       <View bg={"white"} flex={1}>

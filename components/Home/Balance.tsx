@@ -3,16 +3,16 @@ import { AntDesign } from "@expo/vector-icons";
 import { Pressable, useWindowDimensions } from "react-native";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { FontAwesome5, FontAwesome } from "@expo/vector-icons";
+import { PageTypes } from "../../navigation/Pagetypes";
 export default function Balance({
   navigation,
   setModalVisible,
-  ModalVisible,
 }: {
-  navigation: NavigationProp<ParamListBase>;
-  ModalVisible: boolean;
+  navigation: NavigationProp<Record<PageTypes, undefined>>;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const dimension = useWindowDimensions();
+
   return (
     <Box
       backgroundColor={"rgba(0,122,255,0.6)"}
@@ -25,11 +25,13 @@ export default function Balance({
             My Balance
           </Text>
           <Text
-            fontSize={dimension.fontScale * 30}
+            fontSize={
+              dimension.width > 360 ? (dimension.width > 400 ? 30 : 25) : 20
+            }
             color={"white"}
             fontWeight={"bold"}
           >
-            $10,000
+            10,000,000 Ks
           </Text>
           <Text fontSize={dimension.fontScale * 12} color={"white"}>
             Updated Date: 12/12/2024
@@ -43,7 +45,7 @@ export default function Balance({
               color="white"
             />
           </Pressable>
-          <Pressable onPress={() => navigation.navigate("Profile")}>
+          <Pressable onPress={() => navigation.navigate("BalanceInput")}>
             <FontAwesome5
               name="history"
               size={dimension.fontScale * 30}

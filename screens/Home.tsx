@@ -12,7 +12,6 @@ import {
   View,
 } from "native-base";
 import { Platform, useWindowDimensions } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
 
 import Balance from "../components/Home/Balance";
 import UsageGraph from "../components/Home/UsageGraph";
@@ -20,12 +19,18 @@ import RecentUsage from "../components/Home/RecentUsage";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import BalanceInput from "../components/Home/modal/Balanceinput";
 import { useRef, useState } from "react";
-
-function Home({ navigation }: { navigation: NavigationProp<ParamListBase> }) {
+import Profile from "../components/Home/Profile";
+import ProfileModal from "../components/Home/modal/ProfileModal";
+import UsageInputModal from "../components/Home/modal/UsageInputModal";
+import { localPageTypes } from "../navigation/Pagetypes";
+function Home({ navigation }: { navigation: localPageTypes }) {
   const dimension = useWindowDimensions();
   const [ModalVisible, setModalVisible] = useState(false);
+  const [PfModalVisible, setPfModalVisible] = useState(false);
+  const [UsageModalVisible, setUsageModalVisible] = useState(false);
   const initialRef = useRef(null);
   const finalRef = useRef(null);
+
   return (
     <KeyboardAvoidingView
       flex={1}
@@ -40,39 +45,31 @@ function Home({ navigation }: { navigation: NavigationProp<ParamListBase> }) {
         <BalanceInput
           inputprops={{ ModalVisible, setModalVisible, initialRef, finalRef }}
         />
-
-        <VStack flexGrow={0.7} space={(dimension.height / 100) * 2}>
-          <VStack space={(dimension.height / 100) * 1}>
-            <Box>
-              <Text fontSize={dimension.fontScale * 16}>Hello, name</Text>
-            </Box>
-            <Box>
-              <Flex
-                direction="row"
-                justifyContent={"space-between"}
-                alignItems={"center"}
-              >
-                <Text fontSize={dimension.scale * 8} fontWeight={"semibold"}>
-                  Home
-                </Text>
-                <AntDesign
-                  name="pausecircle"
-                  size={dimension.scale * 8}
-                  color="black"
-                />
-              </Flex>
-            </Box>
-          </VStack>
-          <Balance
-            navigation={navigation}
-            ModalVisible={ModalVisible}
-            setModalVisible={setModalVisible}
-          />
+        <ProfileModal
+          navigation={navigation}
+          inputprops={{
+            ModalVisible: PfModalVisible,
+            setModalVisible: setPfModalVisible,
+            initialRef,
+            finalRef,
+          }}
+        />
+        <UsageInputModal
+          inputprops={{
+            ModalVisible: UsageModalVisible,
+            setModalVisible: setUsageModalVisible,
+            initialRef,
+            finalRef,
+          }}
+        />
+        <VStack flexGrow={0.6} space={(dimension.height / 100) * 2}>
+          <Profile setProfileModal={setPfModalVisible} />
+          <Balance navigation={navigation} setModalVisible={setModalVisible} />
           <UsageGraph />
           <RecentUsage navigation={navigation} />
         </VStack>
         <Button
-          onPress={() => navigation.navigate("Profile")}
+          onPress={() => setUsageModalVisible(true)}
           marginX={"auto"}
           width={"100%"}
           bg="blue.500"
