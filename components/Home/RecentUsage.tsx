@@ -26,9 +26,9 @@ export default function RecentUsage({
         </Pressable>
       </HStack>
       <VStack space={(dimension.height / 100) * 2.3}>
-        <Usage mode="show" />
-        <Usage mode="show" />
-        <Usage mode="show" />
+        <Usage mode="show" type="Food" />
+        <Usage mode="show" type="Clothing" />
+        <Usage mode="show" type="Transport" />
       </VStack>
     </Box>
   );

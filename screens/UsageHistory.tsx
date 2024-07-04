@@ -28,7 +28,11 @@ function UsageHistory() {
   const finalref = useRef(null);
   const [data, setdata] = useState([]);
   const renderitem = ({ item }) => (
-    <Usage setusagemodalvisible={setusagemodalvisible} mode="edit" />
+    <Usage
+      setusagemodalvisible={setusagemodalvisible}
+      mode="edit"
+      type="Food"
+    />
   );
   const keyExtractor = useCallback((item) => item.id, [data]);
   const getdata = async () => {
@@ -75,7 +79,7 @@ function UsageHistory() {
         data={data}
         renderItem={renderitem}
         keyExtractor={keyExtractor}
-        ItemSeparatorComponent={() => <View height={5} />}
+        ItemSeparatorComponent={() => <View height={7} />}
       />
     </View>
   );

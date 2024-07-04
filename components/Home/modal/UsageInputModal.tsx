@@ -12,6 +12,10 @@ import React from "react";
 import { Platform } from "react-native";
 import { Categories } from "../../../types/Categories";
 import { isEnabled } from "react-native/Libraries/Performance/Systrace";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function UsageInputModal({
   inputprops,
@@ -22,11 +26,27 @@ export default function UsageInputModal({
   const [shouldOverlapWithTrigger] = React.useState(false);
   const [position, setPosition] = React.useState("");
   let cat: Categories[] = [
-    "Clothing",
-    "Food",
-    "Healthcare",
-    "Housing",
-    "Transport",
+    {
+      name: "Clothing",
+      icon: <FontAwesome5 name="tshirt" size={20} color="black" />,
+    },
+    {
+      name: "Food",
+      icon: <Ionicons name="fast-food" size={24} color="black" />,
+    },
+    {
+      name: "Healthcare",
+      icon: <FontAwesome name="heart" size={22} color="black" />,
+    },
+    {
+      name: "Housing",
+      icon: <FontAwesome name="building" size={24} color="black" />,
+    },
+    {
+      name: "Transport",
+      icon: <FontAwesome name="bus" size={24} color="black" />,
+    },
+    ,
   ];
 
   return (
@@ -52,6 +72,12 @@ export default function UsageInputModal({
           <FormControl isReadOnly>
             <FormControl.Label>Select Category</FormControl.Label>
             <Select
+              _actionSheetContent={{
+                shadow: "9",
+              }}
+              _actionSheet={{
+                _backdrop: { bg: "" },
+              }}
               fontSize={15}
               selectedValue={position}
               mx={{
@@ -66,12 +92,13 @@ export default function UsageInputModal({
             >
               {cat.map((item) => (
                 <Select.Item
+                  startIcon={item.icon}
                   _pressed={{ bg: "blue.200" }}
-                  key={item}
-                  label={item}
-                  value={item}
+                  key={item.name}
+                  label={item.name}
+                  value={item.name}
                   borderRadius={"lg"}
-                  _text={{ color: position === item ? "white" : "black" }}
+                  _text={{ color: position === item.name ? "white" : "black" }}
                 />
               ))}
             </Select>
