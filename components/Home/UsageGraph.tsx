@@ -103,7 +103,7 @@ export default function UsageGraph() {
   }, 3000);
   return (
     <Flex width={"full"} padding={3} borderRadius={"xl"} bg={"purple.100"}>
-      <Box
+      {/* <Box
         alignItems={"center"}
         justifyContent={"center"}
         style={{ display: "flex" }}
@@ -180,9 +180,9 @@ export default function UsageGraph() {
             </Text>
           </HStack>
         </HStack>
-      </Box>
+      </Box> */}
 
-      {/* <Box
+      <Box
         width={"full"}
         height={"64"}
         borderRadius={"2xl"}
@@ -270,7 +270,7 @@ export default function UsageGraph() {
         )}
       </Box>
 
-      {/* <Box
+      {/* {/* <Box
         width={"full"}
         height={"64"}
         bg={"purple.200"}

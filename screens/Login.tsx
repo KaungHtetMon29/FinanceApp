@@ -59,9 +59,7 @@ export default function Login({ navigation }) {
               <Button
                 background={"rgba(0,122,255,1)"}
                 borderRadius={"full"}
-                onPress={() => {
-                  navigation.navigate("Home");
-                }}
+                onPress={() => navigation.navigate("Home")}
               >
                 <Text fontSize={"xl"} fontWeight={"bold"} color={"white"}>
                   LOGIN
@@ -70,7 +68,7 @@ export default function Login({ navigation }) {
               <Button
                 background={"rgba(0,122,255,1)"}
                 borderRadius={"full"}
-                onPress={navigation.navigate("Home")}
+                onPress={() => navigation.navigate("Home")}
               >
                 <Text fontSize={"xl"} fontWeight={"bold"} color={"white"}>
                   SIGN UP
