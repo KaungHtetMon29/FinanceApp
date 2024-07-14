@@ -23,6 +23,7 @@ import Profile from "../components/Home/Profile";
 import ProfileModal from "../components/Home/modal/ProfileModal";
 import UsageInputModal from "../components/Home/modal/UsageInputModal";
 import { localPageTypes } from "../navigation/Pagetypes";
+import Container from "../components/container";
 function Home({ navigation }: { navigation: localPageTypes }) {
   const dimension = useWindowDimensions();
   const [ModalVisible, setModalVisible] = useState(false);
@@ -36,12 +37,7 @@ function Home({ navigation }: { navigation: localPageTypes }) {
       flex={1}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
-        paddingTop={dimension.width > 450 ? 10 : 5}
-        paddingX={dimension.width > 450 ? 10 : 5}
-        bg={"white"}
-      >
+      <Container>
         <BalanceInput
           inputprops={{ ModalVisible, setModalVisible, initialRef, finalRef }}
         />
@@ -62,7 +58,7 @@ function Home({ navigation }: { navigation: localPageTypes }) {
             finalRef,
           }}
         />
-        <VStack flexGrow={0.6} space={(dimension.height / 100) * 2}>
+        <VStack flexGrow={0.6} space={(dimension.height / 100) * 1.4}>
           <Profile setProfileModal={setPfModalVisible} />
           <Balance navigation={navigation} setModalVisible={setModalVisible} />
           <UsageGraph />
@@ -87,11 +83,12 @@ function Home({ navigation }: { navigation: localPageTypes }) {
             Add Usage
           </Text>
         </Button>
-        {/* <Text>Home screen</Text>
+      </Container>
+
+      {/* <Text>Home screen</Text>
   <Button bg="red" onPress={() => navigation.navigate("Profile")}>
     Home2
   </Button> */}
-      </ScrollView>
     </KeyboardAvoidingView>
   );
 }

@@ -2,6 +2,7 @@ import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { Box, HStack, Text, VStack } from "native-base";
 import { Pressable, useWindowDimensions } from "react-native";
 import Usage from "../Usage";
+import { useState } from "react";
 
 export default function RecentUsage({
   navigation,
@@ -9,6 +10,10 @@ export default function RecentUsage({
   navigation: NavigationProp<ParamListBase>;
 }) {
   const dimension = useWindowDimensions();
+  const [show, setshow] = useState(false);
+  setTimeout(() => {
+    setshow(true);
+  }, 1000);
   return (
     <Box>
       <HStack
@@ -25,10 +30,16 @@ export default function RecentUsage({
           </Text>
         </Pressable>
       </HStack>
-      <VStack space={(dimension.height / 100) * 2.3}>
-        <Usage mode="show" />
-        <Usage mode="show" />
-        <Usage mode="show" />
+      <VStack space={(dimension.height / 100) * 2.3} height={"40"}>
+        {show ? (
+          <>
+            <Usage mode="show" type="Food" />
+            <Usage mode="show" type="Clothing" />
+            <Usage mode="show" type="Transport" />
+          </>
+        ) : (
+          <Text>Loading</Text>
+        )}
       </VStack>
     </Box>
   );
