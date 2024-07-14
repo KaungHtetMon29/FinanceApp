@@ -104,6 +104,85 @@ export default function UsageGraph() {
   return (
     <Flex width={"full"} padding={3} borderRadius={"xl"} bg={"purple.100"}>
       <Box
+        alignItems={"center"}
+        justifyContent={"center"}
+        style={{ display: "flex" }}
+      >
+        <Text fontSize={16} fontWeight={"bold"} opacity={0.8}>
+          Last Month Usage
+        </Text>
+        <PieChart
+          hasLegend={false}
+          paddingLeft=""
+          data={data}
+          width={dimension.width}
+          height={200}
+          center={[100, 0]}
+          chartConfig={chartConfig}
+          accessor={"population"}
+          backgroundColor={"transparent"}
+          absolute
+        />
+        <HStack space={4}>
+          <HStack alignItems={"center"} space={1}>
+            <FontAwesome6 name="bowl-food" size={18} color="#FFAB05" />
+            <Text
+              textAlign={"center"}
+              color="#FFAB05"
+              fontWeight={"bold"}
+              fontSize={12}
+            >
+              10%
+            </Text>
+          </HStack>
+          <HStack alignItems={"center"} space={1}>
+            <FontAwesome5 name="tshirt" size={16} color="#FF6B45" />
+            <Text
+              textAlign={"center"}
+              color="#FF6B45"
+              fontWeight={"bold"}
+              fontSize={12}
+            >
+              10%
+            </Text>
+          </HStack>
+          <HStack alignItems={"center"} space={1}>
+            <FontAwesome name="heart" size={18} color="#FF2E7E" />
+            <Text
+              textAlign={"center"}
+              color="#FF2E7E"
+              fontWeight={"bold"}
+              fontSize={12}
+            >
+              10%
+            </Text>
+          </HStack>
+          <HStack alignItems={"center"} space={1}>
+            <FontAwesome name="bus" size={18} color="#D52DB7" />
+            <Text
+              textAlign={"center"}
+              color="#D52DB7"
+              fontWeight={"bold"}
+              fontSize={12}
+            >
+              10%
+            </Text>
+          </HStack>
+          <HStack alignItems={"center"} space={1}>
+            <FontAwesome name="building" size={18} color="#6050DC" />
+            <Text
+              textAlign={"center"}
+              color="#6050DC"
+              fontWeight={"bold"}
+              fontSize={12}
+            >
+              10%
+            </Text>
+          </HStack>
+        </HStack>
+      </Box>
+
+      {/* <Box
         width={"full"}
         height={"64"}
         borderRadius={"2xl"}

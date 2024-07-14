@@ -40,7 +40,6 @@ export default function RecentUsage({
         ) : (
           <Text>Loading</Text>
         )}
-      </VStack>
     </Box>
   );
 }
