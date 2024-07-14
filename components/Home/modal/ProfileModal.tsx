@@ -46,7 +46,7 @@ export default function ProfileModal({
               flex={1}
               bg={"blue.500"}
               onPress={() => {
-                navigation.navigate("Profile"),
+                navigation.navigate("Profile Setting"),
                   inputprops.setModalVisible(false);
               }}
             >
@@ -67,8 +67,7 @@ export default function ProfileModal({
               flex={1}
               bg={"blue.500"}
               onPress={() => {
-                navigation.navigate("Profile"),
-                  inputprops.setModalVisible(false);
+                navigation.navigate("Login"), inputprops.setModalVisible(false);
               }}
             >
               <HStack

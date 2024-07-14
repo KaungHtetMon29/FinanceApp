@@ -3,12 +3,28 @@ import Home from "../screens/Home";
 import Home2 from "../screens/Test";
 import UsageHistory from "../screens/UsageHistory";
 import BalanceInputHistory from "../screens/BalanceInputHistory";
+import Login from "../screens/Login";
+import ProfileSetting from "../screens/ProfileSetting";
+import EditProfile from "../screens/EditProfile";
+import NotificationSetting from "../screens/NotificationSetting";
 
 const Stack = createStackNavigator();
 export default function MyStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Home" component={Home} />
+    <Stack.Navigator
+      screenOptions={{ headerShown: true, headerTitleAlign: "center" }}
+    >
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+        // options={{ headerStyleInterpolator: forFade }}
+      />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen
         name="UsageHistory"
         component={UsageHistory}
@@ -26,18 +42,10 @@ export default function MyStack() {
         //   },
         // }}
       />
-      <Stack.Screen
-        name="BalanceInput"
-        component={BalanceInputHistory}
-
-        // options={{ headerStyleInterpolator: forFade }}
-      />
-      <Stack.Screen
-        name="Profile"
-        component={Home2}
-
-        // options={{ headerStyleInterpolator: forFade }}
-      />
+      <Stack.Screen name="BalanceInput" component={BalanceInputHistory} />
+      <Stack.Screen name="Profile Setting" component={ProfileSetting} />
+      <Stack.Screen name="EDIT PROFILE" component={EditProfile} />
+      <Stack.Screen name="NOTIFICATION" component={NotificationSetting} />
     </Stack.Navigator>
   );
 }
