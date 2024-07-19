@@ -21,15 +21,15 @@ export default function BalanceInputHistory() {
         justifyContent={"center"}
         justifyItems={"center"}
         marginX={"auto"}
-        paddingY={3}
+        paddingY={1}
       >
-        <Text
+        {/* <Text
           color={"blue.500"}
           fontSize={dimension.width > 450 ? 15 : 20}
           fontWeight={"semibold"}
         >
           Usage History
-        </Text>
+        </Text> */}
       </Box>
       <FlatList
         data={data}

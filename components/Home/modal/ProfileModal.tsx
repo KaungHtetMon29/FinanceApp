@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   Flex,
   FormControl,
@@ -10,7 +11,6 @@ import {
   VStack,
 } from "native-base";
 import React from "react";
-import { Platform } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 
@@ -57,10 +57,14 @@ export default function ProfileModal({
                 alignItems={"center"}
                 space={5}
               >
-                <AntDesign name="profile" size={20} color="white" />
-                <Text fontSize={15} fontWeight={"semibold"} color={"white"}>
-                  Update Profile
-                </Text>
+                <Box width={"1/6"}>
+                  <AntDesign name="profile" size={20} color="white" />
+                </Box>
+                <Box width={"full"}>
+                  <Text fontSize={15} fontWeight={"semibold"} color={"white"}>
+                    Update Profile
+                  </Text>
+                </Box>
               </HStack>
             </Button>
             <Button
@@ -77,10 +81,14 @@ export default function ProfileModal({
                 flexDir={"row"}
                 alignItems={"center"}
               >
-                <AntDesign name="logout" size={20} color="white" />
-                <Text fontSize={15} fontWeight={"semibold"} color={"white"}>
-                  Logout
-                </Text>
+                <Box width={"1/6"}>
+                  <AntDesign name="logout" size={20} color="white" />
+                </Box>
+                <Box width={"full"}>
+                  <Text fontSize={15} fontWeight={"semibold"} color={"white"}>
+                    Logout
+                  </Text>
+                </Box>
               </HStack>
             </Button>
           </VStack>

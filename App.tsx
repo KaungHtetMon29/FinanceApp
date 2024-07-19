@@ -1,11 +1,12 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import MyStack from "./navigation/Stack";
-import { extendTheme, NativeBaseProvider, View } from "native-base";
+import { extendTheme, NativeBaseProvider, Text, View } from "native-base";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useWindowDimensions } from "react-native";
+import * as Font from "expo-font";
 
 export default function App() {
   const dimension = useWindowDimensions();
@@ -38,11 +39,9 @@ export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <View bg={"white"} flex={1}>
-        <SafeAreaView style={{ flex: 1 }}>
-          <NavigationContainer>
-            <MyStack />
-          </NavigationContainer>
-        </SafeAreaView>
+        <NavigationContainer>
+          <MyStack />
+        </NavigationContainer>
       </View>
     </NativeBaseProvider>
   );

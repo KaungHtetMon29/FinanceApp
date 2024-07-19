@@ -7,20 +7,16 @@ import {
   View,
   VStack,
 } from "native-base";
-import Container from "../components/container";
 import ProfileSettingContainer from "../components/ProfileSetting/ProfileSettingContainer";
 import { Pressable, useWindowDimensions } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
 import ProfileSettingButton from "../components/ProfileSetting/ProfileSettingButton";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Octicons } from "@expo/vector-icons";
-import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import ChangePw from "../components/EditProfile/ChangePw";
 import { useState } from "react";
 
 export default function ProfileSetting({ navigation }) {
-  const dimension = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [changPw, setChangePw] = useState(false);
   return (
     <ScrollView
@@ -28,7 +24,7 @@ export default function ProfileSetting({ navigation }) {
       contentContainerStyle={{
         flex: 1,
         paddingHorizontal: 15,
-        paddingVertical: dimension.height > 840 ? 20 : 15,
+        paddingVertical: height / 50,
       }}
     >
       <ChangePw isOpen={changPw} onClose={() => setChangePw(false)} />
@@ -54,11 +50,15 @@ export default function ProfileSetting({ navigation }) {
           </HStack>
         </ProfileSettingContainer>
         <ProfileSettingContainer>
-          <VStack space={dimension.height > 840 ? 8 : 7}>
+          <VStack
+            space={width > 360 ? (width > 390 ? (width > 412 ? 8 : 7) : 5) : 4}
+          >
             <Text
               fontSize={"lg"}
               fontWeight={"bold"}
-              paddingBottom={2}
+              paddingBottom={
+                width > 360 ? (width > 390 ? (width > 412 ? 3 : 1) : 0.7) : 0.5
+              }
               opacity={0.7}
             >
               General
@@ -99,11 +99,15 @@ export default function ProfileSetting({ navigation }) {
           </VStack>
         </ProfileSettingContainer>
         <ProfileSettingContainer>
-          <VStack space={dimension.height > 840 ? 8 : 7}>
+          <VStack
+            space={width > 360 ? (width > 390 ? (width > 412 ? 8 : 7) : 5) : 4}
+          >
             <Text
               fontSize={"lg"}
               fontWeight={"bold"}
-              paddingBottom={2}
+              paddingBottom={
+                width > 360 ? (width > 390 ? (width > 412 ? 3 : 1) : 0.7) : 0.5
+              }
               opacity={0.7}
             >
               Preferences
@@ -133,8 +137,9 @@ export default function ProfileSetting({ navigation }) {
               }
             />
             <ProfileSettingButton
+              name="Log Out"
               navigation={navigation}
-              pageName={"Log Out"}
+              pageName={"Login"}
               txtColor="red"
               instruction="Protect your account now"
               icon={<AntDesign name="logout" size={30} color="red" />}
