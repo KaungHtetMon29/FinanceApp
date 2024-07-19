@@ -7,15 +7,22 @@ import Login from "../screens/Login";
 import ProfileSetting from "../screens/ProfileSetting";
 import EditProfile from "../screens/EditProfile";
 import NotificationSetting from "../screens/NotificationSetting";
+import TermOfUse from "../screens/TermOfUse";
+import ProfileSettingPage from "../screens/ProfileSettingPage";
 
 const Stack = createStackNavigator();
 export default function MyStack() {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: true, headerTitleAlign: "center" }}
+      screenOptions={{
+        headerShown: true,
+        headerTitleAlign: "center",
+        headerTitleStyle: { color: "rgba(0,122,255,1)" },
+        headerTintColor: "rgba(0,122,255,1)",
+      }}
     >
       <Stack.Screen
-        name="Login"
+        name="LOGIN"
         component={Login}
         options={{ headerShown: false }}
         // options={{ headerStyleInterpolator: forFade }}
@@ -23,7 +30,9 @@ export default function MyStack() {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerShown: false }}
+        options={{
+          headerShown: false,
+        }}
       />
       <Stack.Screen
         name="UsageHistory"
@@ -43,9 +52,11 @@ export default function MyStack() {
         // }}
       />
       <Stack.Screen name="BalanceInput" component={BalanceInputHistory} />
-      <Stack.Screen name="Profile Setting" component={ProfileSetting} />
+      <Stack.Screen name="Profile Setting" component={ProfileSettingPage} />
       <Stack.Screen name="EDIT PROFILE" component={EditProfile} />
       <Stack.Screen name="NOTIFICATION" component={NotificationSetting} />
+      <Stack.Screen name="TERMS OF USE" component={TermOfUse} />
+      <Stack.Screen name="FAQ" component={TermOfUse} />
     </Stack.Navigator>
   );
 }

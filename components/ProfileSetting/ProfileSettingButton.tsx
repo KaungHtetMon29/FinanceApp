@@ -4,6 +4,7 @@ import { ReactElement } from "react";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 export default function ProfileSettingButton({
   pageName,
+  name = pageName,
   icon,
   instruction,
   txtColor = "black",
@@ -15,6 +16,7 @@ export default function ProfileSettingButton({
   instruction?: string;
   icon: ReactElement;
   navigation: NavigationProp<ParamListBase>;
+  name?: string;
   onPress?: () => void;
 }) {
   return (
@@ -24,7 +26,7 @@ export default function ProfileSettingButton({
           {icon}
           <VStack>
             <Text fontSize={17} fontWeight={"bold"} color={txtColor}>
-              {pageName}
+              {name}
             </Text>
             {instruction && (
               <Text fontSize={13} fontWeight={"normal"} opacity={0.6}>

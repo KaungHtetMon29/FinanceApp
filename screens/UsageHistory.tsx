@@ -54,7 +54,7 @@ function UsageHistory() {
           finalRef: finalref,
         }}
       />
-      <Box
+      {/* <Box
         justifyContent={"center"}
         justifyItems={"center"}
         marginX={"auto"}
@@ -67,10 +67,8 @@ function UsageHistory() {
         >
           Usage History
         </Text>
-      </Box>
-      <Divider />
+      </Box> */}
       <SortMenu />
-      <Divider />
       <FlatList
         contentContainerStyle={{ paddingVertical: 15 }}
         bg={"white"}

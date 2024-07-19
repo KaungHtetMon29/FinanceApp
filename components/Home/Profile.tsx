@@ -2,10 +2,11 @@ import { Box, Flex, Image, Text, VStack } from "native-base";
 import { AntDesign } from "@expo/vector-icons";
 import { Pressable, useWindowDimensions } from "react-native";
 import React, { useState } from "react";
+import { NavigationProp, ParamListBase } from "@react-navigation/native";
 export default function Profile({
-  setProfileModal,
+  navigation,
 }: {
-  setProfileModal: React.Dispatch<React.SetStateAction<boolean>>;
+  navigation: NavigationProp<ParamListBase>;
 }) {
   const dimension = useWindowDimensions();
   const [show, setshow] = useState(false);
@@ -25,7 +26,7 @@ export default function Profile({
             Home
           </Text>
         </VStack>
-        <Pressable onPress={() => setProfileModal(true)}>
+        <Pressable onPress={() => navigation.navigate("Profile Setting")}>
           {show ? (
             <Image
               borderRadius={"full"}
